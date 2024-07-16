@@ -80,6 +80,7 @@
     _proc_mnt_options: "{{ proc_mnt_options }},hidepid={{ hidepid_option }}"
 
 - name: Set option hidepid for proc filesystem
+  when: os_mnt_proc_enabled | default(True) | bool
   ansible.posix.mount:
     path: /proc
     src: proc
